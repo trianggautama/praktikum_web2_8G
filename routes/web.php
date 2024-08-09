@@ -12,6 +12,8 @@ Route::controller(Homecontroller::class)->group(function () {
     Route::post('/login', 'login')->name('login');
     Route::get('/home', 'home')->name('home');
     Route::post('/logout/user', 'logout')->name('logout');
+    Route::get('/mahasiswa/home', 'mahasiswaHome')->name('mahasiswaHome');
+
 });
 
 Route::controller(MahasiswaController::class)->prefix('mahasiswa')->name('mahasiswa.')->group(function () {
@@ -22,4 +24,9 @@ Route::controller(MahasiswaController::class)->prefix('mahasiswa')->name('mahasi
     Route::put('/edit/{id}', 'update')->name('update');
     Route::get('/{id}/show', 'show')->name('show');
     Route::delete('/delete/{id}', 'delete')->name('delete');
+    //pencarian
+    Route::get('/search/data', 'search')->name('search');
+
+    //pencarian
+    Route::get('/print/data/mahasiswa', 'print')->name('print');
 });

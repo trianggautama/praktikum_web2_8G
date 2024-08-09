@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Http\Requests\postMahasiswaRequest;
 use App\Models\Mahasiswa;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -16,6 +17,7 @@ class MahasiswaController extends Controller
         $mahasiswa = Mahasiswa::latest()->get();
         return view('mahasiswa.index',compact('mahasiswa'));
     }
+
     //fungsi halaman tambah data mahasiswa
     public function create()
     {
@@ -23,7 +25,7 @@ class MahasiswaController extends Controller
     }
 
     //fungsi simpan data mahasiswa
-    public function store(Request $request)
+    public function store(postMahasiswaRequest $request)
     {
         //memanipulasi data $request dan mengkripsi password 
         $input              = $request->all();
@@ -100,5 +102,25 @@ class MahasiswaController extends Controller
         $mahasiswa->delete();
 
         return redirect()->route('mahasiswa.index')->with('success','data berhasil dihapus');
+    }
+
+    public function search(Request $request)
+    {
+        $request->flash();
+        if(isset($request->keyword))
+        {
+            $mahasiswa = Mahasiswa::where('npm','LIKE','%'.$request->keyword.'%')
+                        ->latest()->get();
+            return view('mahasiswa.index',compact('mahasiswa'));
+        }else{
+            return redirect()->route('mahasiswa.index');
+        }
+    }
+
+    public function print()
+    {
+        $mahasiswa = Mahasiswa::latest()->get();
+
+        return view('mahasiswa.print',compact('mahasiswa'));
     }
 }

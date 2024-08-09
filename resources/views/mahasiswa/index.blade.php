@@ -7,9 +7,18 @@
                 <div class="col-md">
                     <p>Data Mahasiswa</p>
                 </div>
+                <div class="col-md text-right">
+                    <form action="{{Route('mahasiswa.search')}}">
+                        <div class="form-group">
+                            <input type="text" name="keyword" id="" class="form-control" 
+                                placeholder="cari berdasarkan npm" value="{{old('keyword')}}">
+                        </div>
+                    </form>
+                </div>
                 <div class="col-md">
                     <div class="float-end">
                         <a href="{{Route('mahasiswa.create')}}" class="btn btn-primary">+ tambah data</a>
+                        <a href="{{Route('mahasiswa.print')}}" class="btn btn-primary" target="__blank">Cetak Data</a>
                     </div>
                 </div>
             </div>

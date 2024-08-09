@@ -7,11 +7,20 @@ use Illuminate\Support\Facades\Auth;
 
 class Homecontroller extends Controller
 {
+    //beranda admin
     public function home()
     {
         $userLoggedIn = Auth::user();
         
         return view('home',compact('userLoggedIn'));
+    }
+
+    //beranda mahasiswa
+    public function mahasiswaHome()
+    {
+        $userLoggedIn = Auth::user();
+        
+        return view('mahasiswa_home',compact('userLoggedIn'));
     }
 
     public function login(Request $request)
@@ -21,8 +30,14 @@ class Homecontroller extends Controller
         if(Auth::attempt($credential)){
             //login berhasil
             $request->session()->regenerate();
-            
-            return redirect()->route('home');
+
+            if(Auth::user()->role == 'admin')
+            {
+                return redirect()->route('home');
+            }else{
+                return redirect()->route('mahasiswaHome');
+            }
+
         }else{
             //login gagal
             dd('login gagal');

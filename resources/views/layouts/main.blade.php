@@ -20,9 +20,11 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{Route('home')}}">Home</a>
                     </li>
+                    @if(Auth::user()->role == 'admin')
                     <li class="nav-item">
                         <a class="nav-link" href="{{Route('mahasiswa.index')}}">Mahasiswa</a>
                     </li>
+                    @endif
                     <li class="nav-item">
                         <form action="{{Route('logout')}}" method="post">
                             @csrf 

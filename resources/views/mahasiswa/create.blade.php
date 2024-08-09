@@ -9,10 +9,20 @@
                     <div class="form-group mt-3">
                         <label for="">NPM</label>
                         <input type="text" class="form-control" name="npm">
+                        @error('npm')
+                            <span class="text-danger">
+                                {{ $message }}
+                            </span>
+                        @enderror
                     </div>
                     <div class="form-group mt-3">
                         <label for="">Nama</label>
                         <input type="text" class="form-control" name="nama">
+                        @error('nama')
+                            <span class="text-danger">
+                                {{ $message }}
+                            </span>
+                        @enderror
                     </div>
                     <div class="form-group mt-3">
                         <label for="">Jurusan</label>
@@ -21,6 +31,11 @@
                             <option value="SI">SI</option>
                             <option value="TI">TI</option>
                         </select>
+                        @error('jurusan')
+                            <span class="text-danger">
+                                {{ $message }}
+                            </span>
+                        @enderror
                     </div>
                     <label for="" class="mt-4">Gender</label>
                     <div class="form-check">
@@ -35,39 +50,74 @@
                         Perempuan
                     </label>
                     </div>
+                    @error('gender')
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
                     <div class="row">
                         <div class="col-md">
                             <div class="form-group mt-3">
                                 <label for="">Tempat Lahir</label>
                                 <input type="text" class="form-control" name="tempat_lahir">
+                                @error('tempat_lahir')
+                                    <span class="text-danger">
+                                        {{ $message }}
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="form-group mt-3">
                                 <label for="">Tanggal Lahir</label>
                                 <input type="date" class="form-control" name="tanggal_lahir">
+                                @error('tanggal_lahir')
+                                    <span class="text-danger">
+                                        {{ $message }}
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                     </div>
                     <div class="form-group mt-3">
                         <label for="">Alamat</label>
                         <textarea class="form-control" name="alamat"></textarea>
+                        @error('alamat')
+                            <span class="text-danger">
+                                {{ $message }}
+                            </span>
+                        @enderror
                     </div>
                     <div class="form-group mt-3">
                         <label for="">Foto</label>
                         <input type="file" class="form-control" name="foto">
+                        @error('foto')
+                            <span class="text-danger">
+                                {{ $message }}
+                            </span>
+                        @enderror
                     </div>
                     <div class="row">
                         <div class="col-md">
                             <div class="form-group mt-3">
                                 <label for="">Username</label>
                                 <input type="text" class="form-control" name="username">
+                                @error('username')
+                                    <span class="text-danger">
+                                        {{ $message }}
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="form-group mt-3">
                                 <label for="">Password</label>
                                 <input type="password" class="form-control" name="password">
+                                @error('password')
+                                    <span class="text-danger">
+                                        {{ $message }}
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                     </div>
