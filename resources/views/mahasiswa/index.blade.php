@@ -22,18 +22,28 @@
                             <td>NPM</td>
                             <td>Jurusan</td>
                             <td> Tempat , Tanggal Lahir</td>
-                            <td>Aksi</td>
+                            <td class="text-center">Aksi</td>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($mahasiswa as $mahasiswa)
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{$loop->iteration}}</td>
+                            <td>{{$mahasiswa->user->nama}}</td>
+                            <td>{{$mahasiswa->npm}}</td>
+                            <td>{{$mahasiswa->jurusan}}</td>
+                            <td>{{$mahasiswa->tempat_lahir}}, {{Carbon\carbon::parse($mahasiswa->tanggal_lahir)->format('d-m-Y')}}</td>
+                            <td class="text-center">
+                                <form action="{{Route('mahasiswa.delete',$mahasiswa->id)}}" method="post">
+                                    @csrf 
+                                    @method('delete')
+                                    <a href="{{Route('mahasiswa.edit',$mahasiswa->id)}}" class="btn btn-sm btn-primary"> Detail data</a>
+                                    <a href="{{Route('mahasiswa.edit',$mahasiswa->id)}}" class="btn btn-sm btn-info"> Edit data</a>
+                                    <button type="submit" class="btn btn-sm btn-danger"> Hapus data</button>
+                                </form>
+                            </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
